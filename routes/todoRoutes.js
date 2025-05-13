@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Todo = require('../models/todoList');
 
-router.post('/', async (req, res) => {
+router.post('/todos', async (req, res) => {
     const { title, description, status, duedate } = req.body;
     const todo = new Todo({ title, description, status, duedate });
     console.log("Added")
@@ -18,7 +18,7 @@ router.post('/', async (req, res) => {
     }
 })
 
-router.get('/', async (req, res) => {
+router.get('/todos', async (req, res) => {
     try {
         const todoList = await Todo.find();
         console.log("Todo List", todoList);
