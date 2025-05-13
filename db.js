@@ -10,6 +10,7 @@ app.use(express.json());
 app.use(cors({
     origin: ['https://todo-frontend-two-chi.vercel.app', 'http://localhost:5173'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true
 }));
 
 
