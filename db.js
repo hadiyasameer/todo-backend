@@ -18,7 +18,9 @@ mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log('connected to mongo db'))
     .catch(err => console.log(err))
 
+const userRouter = require('./routes/user');
 const todoRouter = require('./routes/todoRoutes')
+app.use('/user', userRouter);
 app.use('/todo', todoRouter);
 
 const port = process.env.PORT || 3000;
