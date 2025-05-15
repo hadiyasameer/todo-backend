@@ -14,7 +14,10 @@ app.use(cors({
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true
 }));
-
+app.options('*', cors({
+    origin: ['https://todo-frontend-two-chi.vercel.app', 'http://localhost:5173'],
+    credentials: true
+}));
 app.use(cookieParser());
 
 mongoose.connect(process.env.MONGO_URI)
