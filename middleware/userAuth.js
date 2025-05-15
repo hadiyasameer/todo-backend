@@ -3,14 +3,14 @@ import jwt from 'jsonwebtoken';
 export const userAuth = (req, res, next) => {
     try {
         // Try to get the token from either cookies or Authorization header
-        const token = req.cookies.user_token || req.header('Authorization')?.split(' ')[1];
+        const user_token = req.cookies.user_token || req.header('Authorization')?.split(' ')[1];
 
-        if (!token) {
+        if (!user_token) {
             return res.status(401).json({ message: 'No token provided, user not authorized', success: false });
         }
 
         // Verify the token
-        const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
+        const decoded = jwt.verify(user_token, process.env.JWT_SECRET_KEY);
 
         // Attach user data from token to the request
         req.user = decoded;
